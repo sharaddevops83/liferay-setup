@@ -1,0 +1,27 @@
+version: '3.6'
+services:
+  liferay:
+    container_name: ddev-${DDEV_SITENAME}-liferay
+    image: liferay/portal:7.4.3.36-ga36
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080"]
+      interval: 30s
+      timeout: 10s
+      retries: 20
+      start_period: 600s
+    environment:
+      - LIFERAY_JAVA_OPTS=-Xms2g -Xmx4g
+      - LIFERAY_HOME=/opt/liferay
+      - JDBC_DEFAULT_URL=jdbc:mysql://db:3306/db?useUnicode=true&characterEncoding=UTF-8&useFastDateParsing=false
+      - JDBC_DEFAULT_USERNAME=db
+      - JDBC_DEFAULT_PASSWORD=db
+    volumes:
+      - liferay_data:/opt/liferay
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: ${DDEV_APPROOT}
+
+volumes:
+  liferay_data:

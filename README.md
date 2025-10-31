@@ -20,7 +20,7 @@ Follow these steps in your terminal to get Liferay up and running:
 
 1.  **Clone the Repository**
     ```bash
-    git clone [https://github.com/sharaddevops83/liferay-setup.git](https://github.com/sharaddevops83/liferay-setup.git)
+    git clone https://github.com/sharaddevops83/liferay-setup.git
     ```
 
 2.  **Navigate to the Project Directory**
